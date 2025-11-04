@@ -1,0 +1,93 @@
+:root {
+  --color-main: #e3b8a1;
+  --color-accent: #94b49f;
+  --color-light: #F2FAEB;
+  --color-text: #292929;
+}
+
+body {
+  background-color: var(--color-light);
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* 🌿 Sidebar */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  position: fixed;
+  background-color: white;
+  border-right: 1px solid #e5ddd6;
+  padding: 1.5rem;
+}
+
+.nav-link {
+  color: #646262;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: 0.3s;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--color-main);
+  color: white;
+}
+
+/* Contenido principal */
+.main-content {
+  margin-left: 260px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #F2FAEB);
+}
+
+.navbar {
+  background-color: #F2FAEB;
+  border-bottom: 1px solid #eee;
+  padding: 0.8rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+  /* 🌿 Estilo para las tarjetas con borde y sombra */
+  .card-borde-verde {
+    border: 2px solid #E6F2DA;            /* Borde verde */
+    border-radius: 10px;                  /* Esquinas redondeadas */
+    box-shadow: 0 2px 5px rgba(190, 213, 190, 0.822); /* Sombra verde suave */
+    transition: all 0.3s ease;            /* Transición suave */
+  }
+
+  /* ✨ Efecto al pasar el mouse */
+  .card-borde-verde:hover {
+    box-shadow: #DFEBD3; /* Sombra más fuerte */
+    transform: translateY(-3px);                /* Se eleva un poco */
+  }
+
+  /* Cambia el color del texto principal */
+.custom-text {
+  color: #3f683d; /* rosa elegante, puedes cambiar por otro */
+}
+
+/* Evita que el texto se subraye o cambie de color al hacer clic */
+a.text-decoration-none:hover .custom-text {
+  color: #3f683d; /* tono un poco más oscuro al pasar el mouse */
+}
+
+/* Sutil efecto hover para que parezca clickeable */
+.hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.text-tarjetas {
+  color: #3f683d;
+  font-weight: 700;
+}
+
