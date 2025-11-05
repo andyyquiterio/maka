@@ -1,6 +1,21 @@
 <?php
-  // Detecta qué página se pidió (por URL)
-  $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+session_start();
+
+// Verificación de sesión: si no logueado, redirigir a login
+if (!isset($_SESSION['logged_in'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Manejar logout
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('Location: login.php');
+    exit;
+}
+
+// Detecta qué página se pidió (por URL)
+$page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 ?>
 <!DOCTYPE html>
 <html lang="es">

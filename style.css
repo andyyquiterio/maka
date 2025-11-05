@@ -1,93 +1,181 @@
+/* Paleta de Colores  */
 :root {
-  --color-main: #e3b8a1;
-  --color-accent: #94b49f;
-  --color-light: #F2FAEB;
-  --color-text: #292929;
+    --color-primary: #99b794; /* Verde oscuro (Navbar, Notificaciones BG) */
+    --color-secondary: #f1f4ec; /* Beige claro (Fondo de Tarjetas) */
+    --color-text-dark: #546e50; /* Verde oliva para texto principal/iconos */
+    --color-background: #e5e8e0; /* Gris verdoso muy claro para el fondo de la página */
+    --color-progress: #a2c69d; /* Color para la barra de progreso */
 }
 
 body {
-  background-color: var(--color-light);
-  font-family: 'Poppins', sans-serif;
-  color: var(--color-text);
-  margin: 0;
+    background-color: var(--color-background);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* 🌿 Sidebar */
-.sidebar {
-  width: 240px;
-  min-height: 100vh;
-  position: fixed;
-  background-color: white;
-  border-right: 1px solid #e5ddd6;
-  padding: 1.5rem;
+/* ------------------------------------- */
+/* 1. BARRA SUPERIOR (NAVBAR) */
+/* ------------------------------------- */
+.top-bar {
+    background-color: var(--color-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #7b9776;
+}
+.top-bar a {
+    color: white !important;
 }
 
-.nav-link {
-  color: #646262;
-  border-radius: 8px;
-  padding: 8px 12px;
-  transition: 0.3s;
-  font-size: 0.95rem;
+/* ------------------------------------- */
+/* 2. ESTILO GENERAL DE TARJETAS (Mapeo de clases del usuario) */
+/* ------------------------------------- */
+/* Las tarjetas genéricas del usuario (.card, .card-borde-verde, .hover-card) usarán el estilo de .app-card */
+.card, .app-card {
+    background-color: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    text-decoration: none;
+}
+.card-borde-verde, .app-card {
+    border: none !important; /* Eliminar bordes de Bootstrap */
 }
 
-.nav-link:hover,
-.nav-link.active {
-  background-color: var(--color-main);
-  color: white;
+/* El efecto hover se aplica a las tarjetas del usuario */
+.hover-card, .app-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-card:hover, .app-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+.card a {
+    color: inherit; /* Asegura que los enlaces dentro de las tarjetas mantengan el color del texto */
 }
 
-/* Contenido principal */
-.main-content {
-  margin-left: 260px;
-  min-height: 100vh;
-  background: linear-gradient(180deg, #F2FAEB);
+/* ------------------------------------- */
+/* 3. SECCIÓN BANNER (BIENVENIDA) */
+/* ------------------------------------- */
+.dashboard-banner {
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 12px !important;
+    min-height: 150px;
+    padding: 30px !important;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden; /* Para que el pseudo-elemento no se salga */
+}
+.dashboard-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Overlay oscuro para mejor lectura */
+    border-radius: 12px;
+    z-index: 1;
+}
+.dashboard-banner * {
+    position: relative;
+    z-index: 2;
 }
 
-.navbar {
-  background-color: #F2FAEB;
-  border-bottom: 1px solid #eee;
-  padding: 0.8rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+/* ------------------------------------- */
+/* 4. TARJETA DE NOTIFICACIONES */
+/* ------------------------------------- */
+.notif-card {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+}
+.notif-card a {
+    color: white !important;
+}
+/* La clase 'custom-text' del usuario se mapea al color claro para títulos de notif. */
+.notif-card .custom-text, .custom-text {
+    color: #d8e5d6 !important; /* Títulos un poco más claros */
+    font-size: 0.95rem;
+}
+.notif-card p {
+    line-height: 1.4;
+    color: #f1f4ec !important; /* Asegurar que el texto de notificaciones sea visible */
 }
 
-  /* 🌿 Estilo para las tarjetas con borde y sombra */
-  .card-borde-verde {
-    border: 2px solid #E6F2DA;            /* Borde verde */
-    border-radius: 10px;                  /* Esquinas redondeadas */
-    box-shadow: 0 2px 5px rgba(190, 213, 190, 0.822); /* Sombra verde suave */
-    transition: all 0.3s ease;            /* Transición suave */
-  }
-
-  /* ✨ Efecto al pasar el mouse */
-  .card-borde-verde:hover {
-    box-shadow: #DFEBD3; /* Sombra más fuerte */
-    transform: translateY(-3px);                /* Se eleva un poco */
-  }
-
-  /* Cambia el color del texto principal */
-.custom-text {
-  color: #3f683d; /* rosa elegante, puedes cambiar por otro */
-}
-
-/* Evita que el texto se subraye o cambie de color al hacer clic */
-a.text-decoration-none:hover .custom-text {
-  color: #3f683d; /* tono un poco más oscuro al pasar el mouse */
-}
-
-/* Sutil efecto hover para que parezca clickeable */
-.hover-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hover-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
+/* ------------------------------------- */
+/* 5. TARJETAS DE ACCESO RÁPIDO (Catálogo/Inventario) */
+/* ------------------------------------- */
+/* Mapeamos 'text-tarjetas' al color oscuro principal */
 .text-tarjetas {
-  color: #3f683d;
-  font-weight: 700;
+    color: var(--color-text-dark) !important;
+    font-weight: 600;
+}
+.quick-access-card {
+    background-color: var(--color-secondary);
+    text-align: center;
+    padding: 20px !important;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Apila contenido en el centro */
+}
+.quick-access-card .icon-img {
+    width: 55px; 
+    height: 55px; 
+    margin-bottom: 8px; 
 }
 
+/* ------------------------------------- */
+/* 6. TARJETA DE SEGUIMIENTO (TRACKING) */
+/* ------------------------------------- */
+.tracking-card {
+    background-color: var(--color-secondary);
+}
+/* Mapeamos el 'text-warning' (para el título de seguimiento) al color oscuro principal */
+.tracking-card .text-warning {
+    color: var(--color-text-dark) !important; 
+}
+
+.tracking-card .progress-container {
+    background-color: #e5e8e0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.tracking-card .progress-bar-custom {
+    height: 100%;
+    background-color: var(--color-progress);
+    border-radius: 6px 0 0 6px;
+}
+
+/* ------------------------------------- */
+/* 7. TARJETA DE EVENTOS */
+/* ------------------------------------- */
+.events-card {
+    background-color: var(--color-secondary) !important;
+}
+/* Mapeamos 'text-primary' (para el título de eventos) al color oscuro principal */
+.events-card .text-primary {
+    color: var(--color-text-dark) !important; 
+}
+
+/* Detalles del Evento */
+.events-card ul {
+    list-style: none;
+    padding-left: 0; 
+    margin-bottom: 0;
+}
+.events-card li {
+    padding-left: 0.5rem;
+    position: relative;
+    color: var(--color-text-dark) !important; /* Asegurar color oscuro */
+}
+.events-card li::before {
+    content: "•"; /* Usa un punto como lista discreta */
+    position: absolute;
+    left: -0.5rem;
+    color: var(--color-text-dark);
+}

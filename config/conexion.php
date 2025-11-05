@@ -1,14 +1,32 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "maka_db";
+// --- DATOS QUE DEBE RELLENAR ---
+$servidor_ip = "148.220.211.137";  // Ejemplo: "192.168.1.10"
+$nombre_bd   = "makadb";  // Ejemplo: "proyecto_web_bd"
+$usuario_bd  = "amigo_remoto2";
+$password_bd = "1234";
+$puerto      = 3307; // El puerto que configuraste
 
-$conn = new mysqli($host, $user, $pass, $db);
+// DSN (Data Source Name)
+$dsn = "mysql:host=$servidor_ip;port=$puerto;dbname=$nombre_bd;charset=utf8mb4";
 
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-} else {
-    // echo "Conectado correctamente";
+try {
+    // Crear la instancia de PDO
+    $pdo = new PDO($dsn, $usuario_bd, $password_bd);
+    
+    // Configurar PDO para que lance excepciones en caso de error
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    echo "¡Conexión exitosa a la base de datos!";
+
+    // --- Ejemplo de cómo usar la conexión ---
+    // $stmt = $pdo->query("SELECT * FROM tu_tabla");
+    // while ($fila = $stmt->fetch()) {
+    //     print_r($fila);
+    // }
+
+} catch (PDOException $e) {
+    // Capturar cualquier error de conexión
+    die("Error de conexión: " . $e->getMessage());
 }
+
 ?>
