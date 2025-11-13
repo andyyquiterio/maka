@@ -127,25 +127,52 @@ $ultimas_notificaciones = $conn->query("SELECT title, message FROM notifications
             </div>
         </div>
 
-        <!-- 📅 Eventos (col-lg-6 - abarca el espacio completo a la derecha) -->
+  <!-- Eventos-->        
         <div class="col-lg-6 col-md-12">
-            <!-- Aplicamos 'events-card' para el color de fondo beige y h-100 -->
-            <div class="card p-4 card-borde-verde hover-card h-100 events-card" style="min-height: 220px;">
-                <a href="index.php?page=eventos" class="text-decoration-none">
-                    <!-- Usamos 'text-primary' para el color de título mapeado en styles.css -->
-                    <h6 class="fw-bold mb-3 text-primary">
-                        <i class="bi bi-calendar-event me-2"></i>PRÓXIMOS EVENTOS (<?php echo $total_eventos; ?>)
-                    </h6>
-                    <!-- El ul se usa con las clases de events-card en styles.css para los puntos -->
-                    <ul class="small text-muted mb-0 ps-3">
-                        <li>12:00 - Llegada invitados</li>
-                        <li>13:30 - Ceremonia civil</li>
-                        <li>14:00 - Cóctel y Fotos</li>
-                        <!-- Aquí puedes continuar la lista de tu evento -->
-                    </ul>
-                </a>
+    <div class="card p-4 card-borde-verde hover-card h-100 events-card" style="min-height: 220px;">
+        <a href="index.php?page=eventos" class="text-decoration-none d-flex flex-column h-100">
+            <h5 class="text-center fw-bold mb-3" style="color: var(--color-text-dark);">
+                Eventos
+            </h5>
+            <h5 class="text-center fw-bold mb-4" style="color: var(--color-text-dark);">
+                Boda "William y Pepa"
+            </h5>
+            
+            <div class="row g-2 align-items-center flex-grow-1">
+                
+                <div class="col-6 d-flex flex-column align-items-center justify-content-center border-end border-opacity-25 border-tarjeta-evento">
+                    <div class="text-center">
+                        <img src="imagenes/calendario.png" alt="Calendario" class="custom-icon-img mb-2"> 
+                        <p class="small text-muted mb-1 fw-semibold">15 de Diciembre 2025</p>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <img src="imagenes/reloj.png" alt="Reloj" class="custom-icon-img mb-2">
+                        <p class="small text-muted mb-0">
+                            **12:00 hrs** - Inicio de Montaje<br>
+                            **16:00 hrs** - Fin de Montaje<br>
+                            **17:30 hrs** - Inicio de Evento
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="text-center">
+                        <img src="imagenes/reloj.png" alt="Ubicación" class="custom-icon-img mb-2">
+                        <p class="small text-muted mb-1 fw-semibold">15 de Diciembre 2025</p>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <img src="imagenes/reloj.png" alt="Invitados" class="custom-icon-img mb-2">
+                        <p class="small text-muted mb-0">
+                            **5000 invitados**
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </a>
+    </div>
+</div>
 
     </div>
 </main>

@@ -26,14 +26,11 @@ body {
 .top-bar a {
     color: white !important;
 }
+.nav-item {
+    margin-right: 10px;
+}
 
-/* Inicio: Estilos para botones animados en el header
-   Comentario: Este bloque añade la clase `.animated-btn` que
-   realiza una transición hacia el color `#99AA8C` al hacer hover/focus.
-   - Transición: 1500ms
-   - Color objetivo en hover: #99AA8C
-   - Bordes redondeados para estética
-   Se comenta cada bloque para cumplir con la instrucción "siempre comentar". */
+/* Inicio: Estilos para botones animados en el header*/
 .animated-btn {
     /* Mostrar como inline-block para permitir transformaciones y padding */
     display: inline-block;
@@ -235,4 +232,39 @@ body {
 
 @media (max-width: 767px){
     .main-content { padding-top: 64px; }
+}
+
+/* AJUSTE DE ICONOS ANTERIOR: .custom-icon-lg era para iconos de fuente */
+.custom-icon-lg {
+    font-size: 2.2rem; /* Tamaño de icono */
+    color: var(--color-text-dark); /* Color oscuro principal */
+    background-color: #e2e8df; /* Fondo verde claro (similar a la imagen) */
+    padding: 10px;
+    border-radius: 50%;
+}
+
+/* ------------------------------------- */
+/* 7. TARJETA DE EVENTOS (AJUSTES PARA LA NUEVA ESTRUCTURA) */
+/* ------------------------------------- */
+
+/* NUEVA CLASE PARA LOS ICONOS COMO IMAGEN */
+.custom-icon-img {
+    width: 45px; /* Ajusta el tamaño de la imagen */
+    height: 45px;
+    padding: 8px;
+    background-color: #e2e8df; /* Fondo circular alrededor de la imagen */
+    border-radius: 50%; /* Hace que el fondo sea circular */
+    object-fit: contain; /* Asegura que la imagen se vea bien dentro del círculo */
+}
+
+/* Color para el texto pequeño de detalles */
+.events-card p {
+    color: var(--color-text-dark) !important;
+    line-height: 1.2; /* Espaciado de línea más ajustado */
+}
+
+/* Asegurar que la línea divisoria vertical no sea visible si el color de la tarjeta es muy claro */
+.border-tarjeta-evento {
+    /* Usar un color que contraste ligeramente con el fondo de la tarjeta si es necesario */
+    border-color: #d1d5cb !important; /* Un gris verdoso muy sutil */
 }

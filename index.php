@@ -1,49 +1,33 @@
 <?php
-session_start();
+// --- DATOS QUE DEBE RELLENAR ---
+$servidor_ip = "148.220.211.222";  // Ejemplo: "192.168.1.10"
+$nombre_bd   = "makadb";  // Ejemplo: "proyecto_web_bd"
+$usuario_bd  = "amigo_remoto2";
+$password_bd = "1234";
+$puerto      = 3307; // El puerto que configuraste
 
-// Verificación de sesión: si no logueado, redirigir a login
-if (!isset($_SESSION['logged_in'])) {
-    header('Location: login.php');
-    exit;
+
+// DSN (Data Source Name)
+$dsn = "mysql:host=$servidor_ip;port=$puerto;dbname=$nombre_bd;charset=utf8mb4";
+
+try {
+    // Crear la instancia de PDO
+    $pdo = new PDO($dsn, $usuario_bd, $password_bd);
+    
+    // Configurar PDO para que lance excepciones en caso de error
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    //echo "¡Conexión exitosa a la base de datos!";
+
+    // --- Ejemplo de cómo usar la conexión ---
+    // $stmt = $pdo->query("SELECT * FROM tu_tabla");
+    // while ($fila = $stmt->fetch()) {
+    //     print_r($fila);
+    // }
+
+} catch (PDOException $e) {
+    // Capturar cualquier error de conexión
+    die("Error de conexión: " . $e->getMessage());
 }
 
-// Manejar logout
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: login.php');
-    exit;
-}
-
-// Detecta qué página se pidió (por URL)
-$page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maka Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <!-- Comentario: agregamos cache-busting usando filemtime para forzar
-       al navegador/hosting a solicitar la versión actualizada del CSS
-       cuando el archivo cambia. Esto evita problemas de caché en el host. -->
-  <?php
-    $cssPath = __DIR__ . '/style.css';
-    $cssVer = file_exists($cssPath) ? filemtime($cssPath) : time();
-  ?>
-  <link rel="stylesheet" href="style.css?ver=<?php echo $cssVer; ?>">
-</head>
-<body>
-
-  <?php include 'sidebar.php'; ?>
-  <div class="main-content">
-    <?php include 'header.php'; ?>
-
-    <div class="p-4">
-      <?php include "pages/$page.php"; ?>
-    </div>
-  </div>
-
-</body>
-</html>
