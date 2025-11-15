@@ -268,3 +268,567 @@ body {
     /* Usar un color que contraste ligeramente con el fondo de la tarjeta si es necesario */
     border-color: #d1d5cb !important; /* Un gris verdoso muy sutil */
 }
+
+/* =========================================== */
+/* ESTILOS PARA LOGIN */
+/* =========================================== */
+
+:root {
+    --bg-overlay: rgba(0,0,0,0.65);
+    --input-bg: rgba(255,255,255,0.95);
+    --accent: #94b49f;
+    --muted: rgba(255,255,255,0.85);
+    --radius: 14px;
+    --gap: 14px;
+    --max-width: 420px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.overlay {
+    min-height:100vh;
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 18px;
+}
+
+.overlay .card {
+    width:100%;
+    max-width: var(--max-width);
+    padding:28px;
+    border-radius:18px;
+    display:flex;
+    flex-direction:column;
+    gap: var(--gap);
+    background: linear-gradient(rgba(0,0,0,0.00), rgba(0,0,0,0.00));
+}
+
+.overlay .title {
+    font-size: clamp(20px, 5vw, 30px);
+    font-weight:700;
+    line-height:1.05;
+    margin:0 0 6px 0;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.overlay .subtitle {
+    font-size:14px;
+    color:var(--muted);
+    margin:0 0 12px 0;
+}
+
+.overlay form {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.overlay .field {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.overlay label {
+    font-size:13px;
+    color: var(--muted);
+    margin-left:6px;
+}
+
+.overlay input[type="text"], .overlay input[type="password"] {
+    width:100%;
+    padding:14px 16px;
+    border-radius:12px;
+    border: none;
+    background: var(--input-bg);
+    font-size:15px;
+    outline: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35) inset;
+}
+
+.overlay .pass-row {
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.overlay .toggle-pass {
+    position:absolute;
+    right:10px;
+    background:transparent;
+    border:none;
+    font-size:16px;
+    cursor:pointer;
+    padding:6px;
+    color: rgba(0,0,0,0.6);
+}
+
+.overlay .btn {
+    margin-top:6px;
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:none;
+    background: var(--accent);
+    color:white;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+.overlay .btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+}
+
+@media(min-width:900px) {
+    .overlay .card {
+        background: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.15));
+        padding:36px;
+        border-radius:20px;
+    }
+    body { background-position: center right; }
+}
+
+::placeholder { color: rgba(0,0,0,0.45); font-weight:500; }
+
+/* =========================================== */
+/* ESTILOS PARA CONFIGURACIONES */
+/* =========================================== */
+
+.config-header {
+    background: linear-gradient(135deg, #e9edc9, #fefefc);
+    padding: 1.5rem;
+    border-bottom: 1px solid #ccd5ae;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.config-card {
+    background: white;
+    border: 2px solid #ccd5ae;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(160, 177, 138, 0.2);
+    transition: all 0.3s ease;
+}
+
+.config-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(160, 177, 138, 0.3);
+}
+
+.config-btn {
+    background: white;
+    border: 1px solid #ccd5ae;
+    color: #6b7b5a;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.config-btn:hover {
+    background: #e9edc9;
+    color: #4a5d3a;
+    text-decoration: none;
+    transform: translateX(5px);
+}
+
+.config-icon {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+/* =========================================== */
+/* ESTILOS PARA CUENTA */
+/* =========================================== */
+
+.account-header {
+    background: linear-gradient(135deg, #e9edc9, #fefefc);
+    padding: 1rem;
+    border-bottom: 1px solid #ccd5ae;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.account-card {
+    background: #fefefc;
+    border: 2px solid #ccd5ae;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(160, 177, 138, 0.2);
+    margin-bottom: 1rem;
+}
+
+.avatar-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #a3b18a;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-icon {
+    margin-right: 1rem;
+    color: #a3b18a;
+    font-size: 1.2rem;
+}
+
+/* =========================================== */
+/* ESTILOS PARA CUENTA AJUSTES */
+/* =========================================== */
+
+.account-card .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.account-card .form-label {
+    font-weight: 600;
+    color: #4a5d3a;
+    margin-bottom: 0.5rem;
+}
+
+.account-card .form-control {
+    border: 2px solid #ccd5ae;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.account-card .form-control:focus {
+    border-color: #a3b18a;
+    box-shadow: 0 0 0 0.2rem rgba(163, 177, 138, 0.25);
+}
+
+.account-card .input-group {
+    position: relative;
+}
+
+.account-card .input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a3b18a;
+    cursor: pointer;
+}
+
+.account-card .avatar-upload {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.account-card .avatar-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #a3b18a;
+    margin-bottom: 1rem;
+}
+
+.account-card .file-input {
+    display: none;
+}
+
+.account-card .file-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #ccd5ae;
+    color: #4a5d3a;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.account-card .alert {
+    border-radius: 10px;
+    border: none;
+}
+
+/* =========================================== */
+/* ESTILOS PARA REPORTAR FALLA */
+/* =========================================== */
+
+.report-header {
+    background: linear-gradient(135deg, #e9edc9, #fefefc);
+    padding: 1rem;
+    border-bottom: 1px solid #ccd5ae;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.report-card {
+    background: #fefefc;
+    border: 2px solid #ccd5ae;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(160, 177, 138, 0.2);
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+}
+
+.icon-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.report-icon {
+    font-size: 4rem;
+    color: #a3b18a;
+}
+
+.report-card .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.report-card .form-label {
+    font-weight: 600;
+    color: #4a5d3a;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.report-card .form-control, .report-card .form-select, .report-card .form-textarea {
+    border: 2px solid #ccd5ae;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.report-card .form-control:focus, .report-card .form-select:focus, .report-card .form-textarea:focus {
+    border-color: #a3b18a;
+    box-shadow: 0 0 0 0.2rem rgba(163, 177, 138, 0.25);
+    outline: none;
+}
+
+.report-card .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.report-card .input-group {
+    position: relative;
+}
+
+.report-card .input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a3b18a;
+    pointer-events: none;
+}
+
+.btn-pill {
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    background: #a3b18a;
+    border: none;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-pill:hover {
+    background: #8a9b7a;
+    transform: translateY(-1px);
+}
+
+.btn-outline-pill {
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    border: 2px solid #a3b18a;
+    background: transparent;
+    color: #a3b18a;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-outline-pill:hover {
+    background: #a3b18a;
+    color: white;
+}
+
+.file-upload-area {
+    border: 2px dashed #ccd5ae;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.file-upload-area:hover, .file-upload-area.dragover {
+    border-color: #a3b18a;
+    background: rgba(163, 177, 138, 0.05);
+}
+
+.file-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.file-thumb {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #ccd5ae;
+}
+
+.file-thumb img, .file-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.file-thumb .remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.char-counter {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: right;
+    margin-top: 0.25rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #ccd5ae;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #a3b18a;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.report-card .alert {
+    border-radius: 10px;
+    border: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tips-section {
+    background: rgba(163, 177, 138, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.tips-section h6 {
+    color: #4a5d3a;
+    margin-bottom: 0.5rem;
+}
+
+.tips-section ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.tips-section li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #ccd5ae;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-option:hover, .radio-option.selected {
+    border-color: #a3b18a;
+    background: rgba(163, 177, 138, 0.1);
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-option .checkmark {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccd5ae;
+    border-radius: 50%;
+    position: relative;
+}
+
+.radio-option.selected .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    background: #a3b18a;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .radio-group {
+        flex-direction: column;
+    }
+
+    .file-thumbs {
+        justify-content: center;
+    }
+}
